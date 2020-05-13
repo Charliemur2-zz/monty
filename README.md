@@ -5,6 +5,8 @@
 The **monty** programm takes a file with Monty Bytes Code and interprets it for been executed bt the system.
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 The monty programm takes the file and use the lines within to execute them.
+
+
 ***FLOW CHART***
 
 [![INSERT YOUR GRAPHIC HERE](http://i.imgur.com/dt8AUb6.png)]()
@@ -38,7 +40,7 @@ vagrant:~/monty$ ./monty bytecodes/00.m
 vagrant:~/monty$
 ```
 ```
-julien@ubuntu:~/monty$ cat bytecodes/06.m
+vagrant:~/monty$ cat bytecodes/06.m
 push 1
 pint
 push 2

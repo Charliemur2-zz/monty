@@ -1,11 +1,9 @@
-#ifndef _HOLBERTON_H_
-#define _HOLBERTON_H_
-
-#ifndef _HOLBERTON_H_
+#ifndef _MONTY_H_
 #define _MONTY_H_
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,5 +33,8 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+void monty_interpret(const char *monty_file);
+char **monty_tokenize(char *line_to_token);
 
 #endif /* _MONTY_H_ */

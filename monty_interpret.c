@@ -9,13 +9,12 @@
 void monty_interpret(const char *monty_file)
 {
 	FILE *fp = NULL;
-	char *line_ptr = NULL, **tokens = NULL;
+	char *line_ptr = NULL, **tokens = NULL, *limiters = " \n\b\t\a";
 	size_t size = 0;
 	int bytes_read = 0;
 	unsigned int line_counter = 0;
 	stack_t *monty_stack = NULL;
 
-	/** open monty_file and evaluate if is a valid file and get into fp*/
 	fp = fopen(monty_file, "r");
 	if (fp == NULL)
 	{
@@ -24,7 +23,6 @@ void monty_interpret(const char *monty_file)
 	}
 	else
 	{
-		/** get the lines in fp*/
 		while (fp != '\0')
 		{
 			bytes_read = getline(&line_ptr, &size, fp);
@@ -33,14 +31,35 @@ void monty_interpret(const char *monty_file)
 				free(line_ptr);
 				exit(EXIT_FAILURE);
 			}
-			/**set a counter for number of lines*/
 			line_counter++;
-			/**get the tokens of the line*/
+			if (is_empty_line(line_ptr, limiters))
+				continue;
 			tokens = monty_tokenize(line_ptr);
-			/**inicialize stack*/
-			/**evaluate and get the correct instruccion*/
 			monty_get_op(tokens, &monty_stack, line_counter);
 		}
 		free(line_ptr);
 	}
+}
+
+/**
+ * is_empty_line - A function that checks if line only contains delimiters.
+ * @line: The pointer to the line.
+ * @delims: The string with delimiter characters.
+ * Return: 1 if the line only contains delimiters, otherwise 0.
+ */
+int is_empty_line(char *line, char *delims)
+{
+	int i, j;
+
+	for (i = 0; line[i]; i++)
+	{
+		for (j = 0; delims[j]; j++)
+		{
+			if (line[i] == delims[j])
+				break;
+		}
+		if (delims[j] == '\0')
+			return (0);
+	}
+	return (1);
 }

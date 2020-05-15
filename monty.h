@@ -36,5 +36,8 @@ typedef struct instruction_s
 
 void monty_interpret(const char *monty_file);
 char **monty_tokenize(char *line_to_token);
-
+void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num);
+void monty_push(stack_t **head, unsigned int value);
+void monty_pall(stack_t **monty_stack, unsigned int line_number);
+void free_stack(stack_t **head);
 #endif /* _MONTY_H_ */

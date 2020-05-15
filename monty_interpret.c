@@ -2,24 +2,25 @@
 
 /**
  * monty_interpret - takes the line from the file and executs the instruction.
- * @file: pointer to the monty file.
+ * @monty_file: pointer to the monty file.
  *
  */
 
 void monty_interpret(const char *monty_file)
 {
-	FILE *fp;
-	char *line_ptr, **tokens;
+	FILE *fp = NULL;
+	char *line_ptr = NULL, **tokens = NULL;
 	size_t size = 0;
-	int bytes_read;
-	unsigned int line_counter = 1;
+	int bytes_read = 0;
+	unsigned int line_counter = 0;
+	stack_t *monty_stack = NULL;
 
 	/** open monty_file and evaluate if is a valid file and get into fp*/
 	fp = fopen(monty_file, "r");
 	if (fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", monty_file);
-                exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -36,7 +37,10 @@ void monty_interpret(const char *monty_file)
 			line_counter++;
 			/**get the tokens of the line*/
 			tokens = monty_tokenize(line_ptr);
-			printf("%s\n", *tokens);
+			/**inicialize stack*/
+			/**evaluate and get the correct instruccion*/
+			monty_get_op(tokens, &monty_stack, line_counter);
 		}
+		free(line_ptr);
 	}
 }

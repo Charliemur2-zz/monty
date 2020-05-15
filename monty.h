@@ -40,5 +40,10 @@ int is_empty_line(char *line, char *delims);
 void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num);
 void monty_push(stack_t **head, unsigned int value);
 void monty_pall(stack_t **monty_stack, unsigned int line_number);
+void monty_pint(stack_t **monty_stack, unsigned int line_num);
+void monty_pop(stack_t **monty_stack, unsigned int line_num);
+void monty_swap(stack_t **stack, unsigned int line_number);
+void monty_sub(stack_t **monty_stack, unsigned int line_num);
 void free_stack(stack_t **head);
+void monty_add(stack_t **monty_stack, unsigned int line_num);
 #endif /* _MONTY_H_ */

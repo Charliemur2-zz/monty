@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * monty_push - pushes an element to the stack.
+ * _push - pushes an element to the stack.
  * @value: value to push on the stack.
  * @head: pointer to first node.
  */
-void monty_push(stack_t **head, unsigned int value)
+void _push(stack_t **head, unsigned int value)
 {
 	stack_t *newnode;
 

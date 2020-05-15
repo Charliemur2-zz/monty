@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * monty_pint - A function that prints the top value of the stack.
+ * _pint - A function that prints the top value of the stack.
  * @monty_stack: pointer to the stack.
  * @line_num: line number bytecode.
  */
-void monty_pint(stack_t **monty_stack, unsigned int line_num)
+void _pint(stack_t **monty_stack, unsigned int line_num)
 {
 	stack_t *tmp = *monty_stack;
 
@@ -20,11 +20,11 @@ void monty_pint(stack_t **monty_stack, unsigned int line_num)
 
 
 /**
- * monty_pop - A function that removes the top value in the stack.
+ * _pop - A function that removes the top value in the stack.
  * @monty_stack: pointer to the stack.
  * @line_num: line number bytecode.
  */
-void monty_pop(stack_t **monty_stack, unsigned int line_num)
+void _pop(stack_t **monty_stack, unsigned int line_num)
 {
 	stack_t *tmp = *monty_stack;
 
@@ -41,11 +41,11 @@ void monty_pop(stack_t **monty_stack, unsigned int line_num)
 }
 
 /**
- * monty_swap - A function that swaps the two values at the top of stack.
+ * _swap - A function that swaps the two values at the top of stack.
  * @monty_stack: The pointer to the top of a stack list.
  * @line_num: The line number of a Monty bytecodes file.
  */
-void monty_swap(stack_t **monty_stack, unsigned int line_num)
+void _swap(stack_t **monty_stack, unsigned int line_num)
 {
 	int tmp;
 
@@ -60,11 +60,11 @@ void monty_swap(stack_t **monty_stack, unsigned int line_num)
 }
 
 /**
- * monty_add - A function that adds the two top values of a stack.
+ * _add - A function that adds the two top values of a stack.
  * @monty_stack: The pointer to the top of a stack list.
  * @line_num: The line number of a Monty bytecodes file.
  */
-void monty_add(stack_t **monty_stack, unsigned int line_num)
+void _add(stack_t **monty_stack, unsigned int line_num)
 {
 	if ((*monty_stack)->next == NULL)
 	{
@@ -73,16 +73,16 @@ void monty_add(stack_t **monty_stack, unsigned int line_num)
 	}
 
 	(*monty_stack)->next->next->n += (*monty_stack)->next->n;
-	monty_pop(monty_stack, line_num);
+	_pop(monty_stack, line_num);
 }
 
 /**
- * monty_sub - A function that subtracts the second value from the top of a
+ * _sub - A function that subtracts the second value from the top of a
  * stack linked by the top value.
  * @monty_stack: The pointer to the top of a stack list.
  * @line_num: The line number of a Monty bytecodes file.
  */
-void monty_sub(stack_t **monty_stack, unsigned int line_num)
+void _sub(stack_t **monty_stack, unsigned int line_num)
 {
 	if ((*monty_stack)->next == NULL || (*monty_stack)->next->next == NULL)
 	{
@@ -91,5 +91,5 @@ void monty_sub(stack_t **monty_stack, unsigned int line_num)
 	}
 
 	(*monty_stack)->next->next->n -= (*monty_stack)->next->n;
-	monty_pop(monty_stack, line_num);
+	_pop(monty_stack, line_num);
 }

@@ -10,14 +10,15 @@ void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num)
 {
 	unsigned int i, j;
 	char *str = "usage: push integer";
-	instruction_t inst[] = {{"push", monty_push}, {"pall", monty_pall},
-				{"null", NULL}};
+	instruction_t op[] = {{"push", _push}, {"pall", _pall}, {"pint", _pint},
+			      {"pop", _pop}, {"swap", _swap}, {"add", _add}, {"sub", _sub},
+			      {"null", NULL}};
 
-	for (i = 0; i <= 2; i++)
+	for (i = 0; i <= 7; i++)
 	{
-		if (strcmp(inst[i].opcode, token[0]) == 0)
+		if (strcmp(op[i].opcode, token[0]) == 0)
 		{
-			if (strcmp(inst[i].opcode, "push") == 0)
+			if (strcmp(op[i].opcode, "push") == 0)
 			{
 				if (token[1] == NULL)
 				{
@@ -38,7 +39,7 @@ void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num)
 				}
 				line_num = atoi(token[1]);
 			}
-			inst[i].f(monty_stack, line_num);
+			op[i].f(monty_stack, line_num);
 			free(token);
 			return;
 		}

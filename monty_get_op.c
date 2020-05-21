@@ -47,7 +47,7 @@ void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num)
 	free_stack(monty_stack);
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_num, token[0]);
 	free(token);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 
 /**

@@ -29,7 +29,7 @@ void monty_get_op(char **token, stack_t **monty_stack, unsigned int line_num)
 				{
 					if (token[1][j] == '-' && j == 0)
 						continue;
-					if (token[1][j] < '0' || token[1][i] > '9')
+					if (token[1][j] < '0' || token[1][j] > '9')
 					{
 						free_stack(monty_stack);
 						free(token);

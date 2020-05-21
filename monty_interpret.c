@@ -11,7 +11,6 @@ void monty_interpret(const char *monty_file)
 	FILE *fp = NULL;
 	char *line_ptr = NULL, **tokens = NULL, *limiters = " \n\b\t\a";
 	size_t size = 0;
-	int bytes_read = 0;
 	unsigned int line_counter = 0;
 	stack_t *monty_stack = NULL;
 
@@ -23,14 +22,8 @@ void monty_interpret(const char *monty_file)
 	}
 	else
 	{
-		while (fp != '\0')
+		while (getline(&line_ptr, &size, fp) > 0)
 		{
-			bytes_read = getline(&line_ptr, &size, fp);
-			if (bytes_read < 0)
-			{
-				free(line_ptr);
-				exit(EXIT_FAILURE);
-			}
 			line_counter++;
 			if (is_empty_line(line_ptr, limiters))
 				continue;
@@ -38,6 +31,7 @@ void monty_interpret(const char *monty_file)
 			monty_get_op(tokens, &monty_stack, line_counter);
 		}
 		free(line_ptr);
+		exit(EXIT_SUCCESS);
 	}
 }
 

@@ -4,5 +4,5 @@ pall
 push 235
 push -234567
 push     56
-	push	23
+	push	
 		pall
